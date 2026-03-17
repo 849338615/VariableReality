@@ -49,23 +49,17 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,10,16,0.7
 .click-pulse-inner{border:1px solid rgba(180,240,255,0.25);width:60px;height:60px;animation-duration:0.6s}
 @keyframes clickPulseOut{0%{transform:translate(-50%,-50%) scale(0);opacity:1}100%{transform:translate(-50%,-50%) scale(3);opacity:0}}
 
-.btn-sim{position:relative;display:inline-flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(34,211,238,0.25) 0%,rgba(139,92,246,0.22) 50%,rgba(236,72,153,0.18) 100%),#060a10;color:#fff;border:none;padding:20px 52px;border-radius:120px;font-family:var(--font-mono);font-size:13px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;text-shadow:0 0 20px rgba(139,92,246,0.5);cursor:pointer;overflow:visible;transition:all 0.4s cubic-bezier(0.22,0.61,0.36,1);box-shadow:0 0 36px rgba(139,92,246,0.2),0 0 70px rgba(34,211,238,0.1);text-decoration:none;animation:simFloat 4s ease-in-out infinite;z-index:1;background-size:200% 200%;animation:simFloat 4s ease-in-out infinite,simBgShift 8s ease-in-out infinite}
-@keyframes simBgShift{0%,100%{background-position:0% 50%}50%{background-position:100% 50%}}
-.btn-sim-wrap{position:relative;display:inline-block;border-radius:120px;padding:1.5px;background:conic-gradient(from var(--sim-border-angle,0deg),rgba(34,211,238,0.6),rgba(56,189,248,0.3),rgba(139,92,246,0.6),rgba(236,72,153,0.4),rgba(251,146,60,0.3),rgba(34,211,238,0.6));animation:simBorderSpin 4s linear infinite}
-.btn-sim-wrap::after{content:'';position:absolute;inset:-10px;border-radius:120px;background:conic-gradient(from var(--sim-border-angle,0deg),transparent,rgba(139,92,246,0.25),transparent,rgba(34,211,238,0.18),transparent);filter:blur(14px);animation:simBorderSpin 4s linear infinite;pointer-events:none;opacity:0.8;z-index:-1}
-@property --sim-border-angle{syntax:'<angle>';initial-value:0deg;inherits:false}
-@keyframes simBorderSpin{to{--sim-border-angle:360deg}}
+.btn-sim{position:relative;display:inline-flex;align-items:center;gap:14px;background:linear-gradient(135deg,rgba(34,211,238,0.25) 0%,rgba(139,92,246,0.22) 50%,rgba(236,72,153,0.18) 100%);color:#fff;border:1.5px solid rgba(139,92,246,0.5);padding:20px 52px;border-radius:120px;font-family:var(--font-mono);font-size:13px;font-weight:500;letter-spacing:0.22em;text-transform:uppercase;text-shadow:0 0 20px rgba(139,92,246,0.5);cursor:pointer;overflow:visible;transition:all 0.4s cubic-bezier(0.22,0.61,0.36,1);box-shadow:0 0 36px rgba(139,92,246,0.2),0 0 70px rgba(34,211,238,0.1),inset 0 0 30px rgba(139,92,246,0.06);text-decoration:none;animation:simFloat 4s ease-in-out infinite,simBorderColor 6s ease-in-out infinite;z-index:1;background-size:200% 200%}
+@keyframes simBorderColor{0%,100%{border-color:rgba(34,211,238,0.5);box-shadow:0 0 36px rgba(34,211,238,0.15),0 0 70px rgba(139,92,246,0.08),inset 0 0 30px rgba(34,211,238,0.06)}33%{border-color:rgba(139,92,246,0.5);box-shadow:0 0 36px rgba(139,92,246,0.2),0 0 70px rgba(236,72,153,0.08),inset 0 0 30px rgba(139,92,246,0.06)}66%{border-color:rgba(236,72,153,0.4);box-shadow:0 0 36px rgba(236,72,153,0.15),0 0 70px rgba(34,211,238,0.08),inset 0 0 30px rgba(236,72,153,0.06)}}
 @keyframes simFloat{0%,100%{transform:translateY(0)}50%{transform:translateY(-4px)}}
 .btn-sim::before{content:'';position:absolute;inset:0;border-radius:120px;background:radial-gradient(ellipse 100% 100% at var(--sim-spot-x,30%) 50%,rgba(139,92,246,0.2),rgba(34,211,238,0.1) 40%,transparent 70%);animation:simSpotDrift 5s ease-in-out infinite;pointer-events:none}
 @keyframes simSpotDrift{0%,100%{--sim-spot-x:20%}50%{--sim-spot-x:80%}}
 @property --sim-spot-x{syntax:'<percentage>';initial-value:20%;inherits:false}
 .btn-sim::after{content:'\2192';font-family:var(--font-body);font-weight:300;font-size:20px;letter-spacing:0;display:inline-block;transition:transform 0.3s cubic-bezier(0.22,0.61,0.36,1);animation:simArrowPulse 2.5s ease-in-out infinite;background:linear-gradient(90deg,var(--teal),rgba(139,92,246,0.9));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 @keyframes simArrowPulse{0%,100%{transform:translateX(0);opacity:1}50%{transform:translateX(4px);opacity:0.6}}
-.btn-sim:hover{background:linear-gradient(135deg,rgba(34,211,238,0.35) 0%,rgba(139,92,246,0.3) 50%,rgba(236,72,153,0.22) 100%),#060a10;box-shadow:0 0 56px rgba(139,92,246,0.35),0 0 90px rgba(34,211,238,0.15),0 4px 24px rgba(0,0,0,0.3);transform:translateY(-3px) scale(1.03);animation:none;background-size:100% 100%}
+.btn-sim:hover{background:linear-gradient(135deg,rgba(34,211,238,0.35) 0%,rgba(139,92,246,0.3) 50%,rgba(236,72,153,0.22) 100%);border-color:rgba(139,92,246,0.7);box-shadow:0 0 56px rgba(139,92,246,0.35),0 0 90px rgba(34,211,238,0.15),0 4px 24px rgba(0,0,0,0.3),inset 0 0 40px rgba(139,92,246,0.1);transform:translateY(-3px) scale(1.03);animation:none}
 .btn-sim:hover::before{animation:none;opacity:0}
 .btn-sim:hover::after{animation:none;transform:translateX(6px);opacity:1}
-.btn-sim-wrap:hover{animation:simBorderSpin 1.5s linear infinite}
-.btn-sim-wrap:hover::after{opacity:0.9;animation:simBorderSpin 1.5s linear infinite}
 .btn-sim:active{transform:translateY(1px) scale(0.97);box-shadow:0 0 16px rgba(139,92,246,0.2);transition:all 0.1s ease}
 .btn-sim .btn-ripple{background:radial-gradient(circle,rgba(139,92,246,0.3),rgba(34,211,238,0.15) 50%,transparent 70%)}
 
@@ -686,7 +680,7 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
     </div>
 
     <div class="exhibit-cta fade-up" style="margin-top:56px">
-      <span class="btn-sim-wrap"><button class="btn-sim" id="simBtn">Try the Simulator</button></span>
+      <button class="btn-sim" id="simBtn">Try the Simulator</button>
       <span>Combine all four variables&nbsp;yourself</span>
     </div>
   </div>
