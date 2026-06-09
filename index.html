@@ -12,8 +12,8 @@
 <style>
 :root{--bg:#060a10;--surface:#0f1728;--text:#d4dde9;--text-heavy:#f0f3f8;--muted:#8899ae;--accent:#38bdf8;--teal:#22d3ee;--cyan:#06b6d4;--radius:16px;--font-body:'DM Sans',sans-serif;--font-mono:'DM Mono',monospace;--font-display:'Instrument Serif',serif;--glow:rgba(34,211,238,0.15);--glow-strong:rgba(34,211,238,0.35)}
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
-html{scroll-behavior:smooth;scrollbar-width:none}
-html::-webkit-scrollbar{display:none}
+html{scroll-behavior:smooth;scrollbar-width:auto}
+html::-webkit-scrollbar{display:block}
 body{font-family:var(--font-body);font-weight:400;color:var(--text);background:var(--bg);cursor:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='32' height='32'%3E%3Cdefs%3E%3CradialGradient id='g'%3E%3Cstop offset='0%25' stop-color='%2322d3ee' stop-opacity='0.9'/%3E%3Cstop offset='35%25' stop-color='%2322d3ee' stop-opacity='0.5'/%3E%3Cstop offset='65%25' stop-color='%2322d3ee' stop-opacity='0.15'/%3E%3Cstop offset='100%25' stop-color='%2322d3ee' stop-opacity='0'/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx='16' cy='16' r='15' fill='url(%23g)'/%3E%3Ccircle cx='16' cy='16' r='4' fill='%2322d3ee' opacity='0.95'/%3E%3Ccircle cx='16' cy='16' r='6' fill='none' stroke='%2322d3ee' stroke-width='0.5' opacity='0.4'/%3E%3C/svg%3E") 16 16,auto;line-height:1.6;-webkit-font-smoothing:antialiased;background-image:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(15,23,40,1),var(--bg))}
 a,button,.btn-primary,.btn-sim,.carousel-nav,.carousel-dot,.preset-pill,.fps-num,.card-expand,input[type=range]{cursor:url(data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%2732%27 height=%2732%27%3E%3Cdefs%3E%3CradialGradient id=%27g%27%3E%3Cstop offset=%270%25%27 stop-color=%27%23ffffff%27 stop-opacity=%271%27/%3E%3Cstop offset=%2718%25%27 stop-color=%27%2322d3ee%27 stop-opacity=%270.95%27/%3E%3Cstop offset=%2740%25%27 stop-color=%27%2322d3ee%27 stop-opacity=%270.4%27/%3E%3Cstop offset=%2770%25%27 stop-color=%27%2322d3ee%27 stop-opacity=%270.1%27/%3E%3Cstop offset=%27100%25%27 stop-color=%27%2322d3ee%27 stop-opacity=%270%27/%3E%3C/radialGradient%3E%3C/defs%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2715%27 fill=%27url(%23g)%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%273%27 fill=%27white%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%278%27 fill=%27none%27 stroke=%27%2322d3ee%27 stroke-width=%271%27 opacity=%270.6%27/%3E%3Ccircle cx=%2716%27 cy=%2716%27 r=%2712%27 fill=%27none%27 stroke=%27%2322d3ee%27 stroke-width=%270.5%27 opacity=%270.25%27/%3E%3C/svg%3E) 16 16,pointer!important}
 nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,10,16,0.72);backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);border-bottom:1px solid rgba(34,211,238,0.08);padding:16px 40px;display:flex;align-items:center;justify-content:space-between}
@@ -37,7 +37,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,10,16,0.7
 .hero h1{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(48px,8vw,100px);line-height:1.12;letter-spacing:-0.02em;color:var(--text-heavy);max-width:1100px;animation:heroTextFloat 6s ease-in-out infinite}
 @keyframes heroTextFloat{0%,100%{transform:translateY(0) scale(1)}50%{transform:translateY(-8px) scale(1.005)}}
 .hero h1 em{font-style:italic;font-weight:700;color:#8ac4ff;text-shadow:0 0 40px rgba(100,170,255,0.3)}
-.hero-sub{font-weight:400;font-size:clamp(17px,1.9vw,21px);color:var(--text);max-width:540px;margin-top:40px;margin-bottom:56px;line-height:1.8;animation:heroSubDrift 9s ease-in-out infinite 1.5s}
+.hero-sub{font-weight:400;font-size:clamp(17px,1.9vw,21px);color:var(--text);max-width:540px;margin-top:40px;margin-bottom:56px;line-height:1.8;text-wrap:pretty;animation:heroSubDrift 9s ease-in-out infinite 1.5s}
 @keyframes heroSubDrift{0%,100%{transform:translateY(0);opacity:0.8}50%{transform:translateY(-5px);opacity:1}}
 .btn-primary{position:relative;display:inline-block;background:rgba(15,23,40,0.6);color:var(--teal);border:1px solid rgba(34,211,238,0.3);padding:22px 64px;border-radius:120px;font-family:var(--font-mono);font-size:12px;font-weight:500;letter-spacing:0.30em;text-transform:uppercase;text-shadow:0 0 16px var(--glow);backdrop-filter:blur(20px);cursor:pointer;overflow:hidden;transition:all 0.4s cubic-bezier(0.22,0.61,0.36,1);box-shadow:0 0 30px rgba(34,211,238,0.08),inset 0 1px 0 rgba(34,211,238,0.1);text-decoration:none}
 .btn-primary:hover{background:rgba(34,211,238,0.12);border-color:rgba(34,211,238,0.5);box-shadow:0 0 48px rgba(34,211,238,0.2),0 0 12px rgba(34,211,238,0.1);transform:translateY(-2px)}
@@ -68,7 +68,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,10,16,0.7
 .sec-eyebrow{font-family:var(--font-mono);font-size:11px;letter-spacing:0.30em;text-transform:uppercase;color:var(--teal);margin-bottom:16px;font-weight:300;text-shadow:0 0 12px var(--glow)}
 .sec-title{font-family:'Playfair Display',serif;font-weight:700;font-size:clamp(30px,5vw,56px);line-height:1.12;letter-spacing:-0.01em;color:var(--text-heavy)}
 .sec-rule{width:48px;height:1px;background:var(--teal);border:none;border-radius:0;margin:24px 0 0 0;box-shadow:0 0 12px var(--glow)}
-.sec-desc{font-weight:300;font-size:17px;color:var(--muted);max-width:560px;margin-top:20px;line-height:1.7}
+.sec-desc{font-weight:300;font-size:17px;color:var(--muted);max-width:560px;margin-top:20px;line-height:1.7;text-wrap:pretty}
 
 /* EXHIBIT PROMPT */
 .exhibit-prompt{background:var(--bg);padding:100px 40px 100px;text-align:center}
@@ -149,14 +149,14 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,10,16,0.7
 .carousel-next{right:10px}
 .carousel-dots{display:flex;justify-content:center;gap:8px;margin-top:14px}
 .carousel-dot{width:7px;height:7px;border-radius:50%;background:rgba(34,211,238,0.15);border:1px solid rgba(34,211,238,0.2);cursor:pointer;transition:all 0.3s ease;padding:0}
-.carousel-dot.active{background:var(--teal);border-color:var(--teal);box-shadow:0 0 8px rgba(34,211,238,0.4)}
+.carousel-dot.active{background:transparent;border-color:transparent;box-shadow:none}
 .carousel-dot:hover:not(.active){background:rgba(34,211,238,0.3)}
 .carousel-meta{display:flex;align-items:center;justify-content:space-between;margin-top:10px;gap:12px}
 .photo-credit{font-size:13px;color:var(--muted);line-height:1.5;margin:0;transition:opacity 0.3s}
 .photo-counter{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;color:var(--muted);white-space:nowrap;flex-shrink:0}
 .quick-section{margin-bottom:32px}
 .quick-title{font-weight:700;font-size:20px;color:var(--text-heavy);margin-bottom:6px}
-.quick-sub{font-size:15px;color:var(--muted);margin-bottom:14px}
+.quick-sub{font-size:15px;color:var(--muted);margin-bottom:14px;text-wrap:pretty}
 .preset-pills{display:flex;flex-wrap:wrap;gap:8px}
 .preset-pill{font-family:var(--font-body);font-size:13.5px;font-weight:400;background:rgba(15,23,40,0.5);color:var(--text);border:1px solid rgba(34,211,238,0.1);border-radius:24px;padding:8px 18px;cursor:pointer;transition:all 0.25s;display:inline-flex;align-items:center;gap:6px}
 .preset-pill:hover{border-color:rgba(34,211,238,0.3);background:rgba(34,211,238,0.06)}
@@ -168,7 +168,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,10,16,0.7
 .param-badge{font-family:var(--font-mono);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;font-weight:400;padding:3px 10px;border-radius:6px;background:rgba(34,211,238,0.08);color:var(--teal);border:1px solid rgba(34,211,238,0.1)}
 .param-value{font-family:var(--font-mono);font-size:15px;font-weight:500;color:var(--teal);background:rgba(34,211,238,0.06);padding:4px 12px;border-radius:8px}
 .param-desc{font-size:15px;color:var(--muted);line-height:1.6;margin-bottom:14px}
-.fps-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px}
+.fps-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;position:relative}
 .fps-cell{text-align:center}
 .fps-num{font-family:var(--font-mono);font-size:15px;font-weight:500;padding:10px 0;border:1px solid rgba(34,211,238,0.1);border-radius:10px;cursor:pointer;transition:all 0.2s;background:rgba(15,23,40,0.5);color:var(--text);display:block;width:100%}
 .fps-num:hover{border-color:rgba(34,211,238,0.3);background:rgba(34,211,238,0.06)}
@@ -309,10 +309,10 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,10,16,0.7
 .inline-tip strong{color:#fff;font-weight:600}
 .inline-tip::before{content:'';position:absolute;top:-5px;left:24px;width:10px;height:10px;background:rgba(15,23,40,0.95);border-top:1px solid rgba(34,211,238,0.15);border-left:1px solid rgba(34,211,238,0.15);transform:rotate(45deg);border-radius:2px}
 .param-section{position:relative}
-.fps-tip{position:absolute;left:50%;transform:translateX(-50%) translateY(-4px);bottom:calc(100% + 8px);white-space:normal;width:280px;background:rgba(15,23,40,0.95);color:var(--text);border:1px solid rgba(34,211,238,0.15);border-radius:12px;padding:14px 18px;font-size:13px;line-height:1.55;box-shadow:0 6px 24px rgba(0,0,0,0.4);opacity:0;transition:opacity 0.3s ease,transform 0.3s ease;pointer-events:none;z-index:50;text-align:left}
+.fps-tip{position:absolute;left:50%;transform:translateX(-50%) translateY(-4px);bottom:calc(100% + 8px);white-space:normal;width:min(280px,100%);background:rgba(15,23,40,0.95);color:var(--text);border:1px solid rgba(34,211,238,0.15);border-radius:12px;padding:14px 18px;font-size:13px;line-height:1.55;box-shadow:0 6px 24px rgba(0,0,0,0.4);opacity:0;transition:opacity 0.3s ease,transform 0.3s ease;pointer-events:none;z-index:50;text-align:left}
 .fps-tip.show{opacity:1;transform:translateX(-50%) translateY(0)}
 .fps-tip strong{color:#fff;font-weight:600}
-.fps-tip::after{content:'';position:absolute;bottom:-5px;left:50%;margin-left:-5px;width:10px;height:10px;background:rgba(15,23,40,0.95);border-bottom:1px solid rgba(34,211,238,0.15);border-right:1px solid rgba(34,211,238,0.15);transform:rotate(45deg);border-radius:2px}
+.fps-tip::after{content:'';position:absolute;bottom:-5px;left:var(--fps-arrow,50%);margin-left:-5px;width:10px;height:10px;background:rgba(15,23,40,0.95);border-bottom:1px solid rgba(34,211,238,0.15);border-right:1px solid rgba(34,211,238,0.15);transform:rotate(45deg);border-radius:2px}
 .fps-cell{position:relative}
 /* Gradient accents for cohesion */
 .exhibit-prompt{background:linear-gradient(180deg,var(--bg) 0%,rgba(15,23,40,0.5) 50%,var(--bg) 100%);position:relative}
@@ -560,6 +560,443 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
   .si-categories{gap:4px}
   .si-cat-btn{padding:5px 10px;font-size:8px}
 }
+
+/* === READABILITY + ACCESSIBILITY REMEDIATION === */
+:root{
+  --bg:oklch(11.5% 0.025 250);
+  --bg-soft:oklch(14.5% 0.027 250);
+  --surface:oklch(18.5% 0.032 248);
+  --surface-strong:oklch(22% 0.035 248);
+  --surface-raised:oklch(25% 0.038 248);
+  --text:oklch(89% 0.024 245);
+  --text-heavy:oklch(97% 0.012 245);
+  --muted:oklch(76% 0.035 245);
+  --muted-strong:oklch(82% 0.032 245);
+  --teal:oklch(83% 0.145 211);
+  --accent:oklch(79% 0.125 248);
+  --pink:oklch(80% 0.145 345);
+  --purple:oklch(78% 0.145 292);
+  --yellow:oklch(84% 0.14 86);
+  --green:oklch(78% 0.12 160);
+  --border:oklch(35% 0.045 248);
+  --border-strong:oklch(47% 0.06 242);
+  --focus:oklch(88% 0.16 92);
+  --focus-soft:oklch(88% 0.16 92 / 0.22);
+  --shadow:0 18px 48px rgba(0,0,0,0.32);
+  --font-body:'DM Sans',system-ui,-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;
+  --font-mono:'DM Mono','SFMono-Regular',Consolas,monospace;
+}
+
+html{scrollbar-width:auto;scroll-padding-top:88px}
+html::-webkit-scrollbar{display:block;width:12px;height:12px}
+html::-webkit-scrollbar-track{background:var(--bg)}
+html::-webkit-scrollbar-thumb{background:var(--border-strong);border:3px solid var(--bg);border-radius:999px}
+
+body{
+  color:var(--text);
+  background:
+    radial-gradient(ellipse 80% 42% at 50% 0%,oklch(20% 0.04 248 / 0.75),transparent 65%),
+    linear-gradient(180deg,var(--bg),oklch(13% 0.028 250) 46%,var(--bg));
+  cursor:auto;
+  font-size:16px;
+  line-height:1.7;
+}
+body,a,button,.btn-primary,.btn-sim,.carousel-nav,.carousel-dot,.preset-pill,.fps-num,.card-expand,.si-cat-btn,.si-device-pill,.si-fallback-btn,.si-change-btn,.si-card-expand,input[type=range]{cursor:pointer!important}
+#heroSphere{cursor:auto!important}
+button,input{font:inherit}
+button{touch-action:manipulation}
+a:focus-visible,button:focus-visible,input:focus-visible,[tabindex]:focus-visible{
+  outline:3px solid var(--focus);
+  outline-offset:4px;
+  box-shadow:0 0 0 7px var(--focus-soft)!important;
+}
+
+nav{
+  background:oklch(12.5% 0.025 250 / 0.94);
+  border-bottom:1px solid var(--border);
+  box-shadow:0 10px 32px rgba(0,0,0,0.34);
+}
+.nav-links a{
+  color:var(--muted-strong);
+  font-size:12px;
+  letter-spacing:0.08em;
+  font-weight:600;
+  min-height:44px;
+  display:inline-flex;
+  align-items:center;
+}
+.nav-links a:hover{color:var(--text-heavy);text-shadow:none}
+.nav-reset{
+  min-height:44px;
+  color:var(--text-heavy);
+  background:var(--surface-strong);
+  border-color:var(--border-strong);
+  font-size:12px;
+  letter-spacing:0.05em;
+  text-shadow:none;
+  box-shadow:none;
+}
+.nav-reset:hover{background:var(--surface-raised);text-shadow:none;box-shadow:var(--shadow)}
+.nav-burger{width:44px;height:44px;border-color:var(--border-strong);color:var(--text-heavy)}
+
+.hero{background:transparent}
+.hero::before{background:radial-gradient(ellipse 56% 48% at 50% 48%,oklch(64% 0.12 215 / 0.10),transparent 72%)}
+.hero-eyebrow,.hero h1,.hero-sub{animation:none;text-shadow:none}
+.hero-eyebrow,.sec-eyebrow{
+  color:var(--teal);
+  font-size:13px;
+  letter-spacing:0.10em;
+  font-weight:700;
+  text-shadow:none;
+}
+.hero h1{color:var(--text-heavy)}
+.hero h1 em{color:oklch(83% 0.10 247);text-shadow:none}
+.hero-sub{color:var(--text);font-size:clamp(18px,1.8vw,22px);max-width:680px;line-height:1.75}
+.btn-primary,.btn-sim{
+  min-height:52px;
+  border-radius:999px;
+  border:1px solid var(--border-strong);
+  background:var(--surface-strong);
+  color:var(--text-heavy);
+  font-size:14px;
+  letter-spacing:0.08em;
+  text-transform:none;
+  text-shadow:none;
+  box-shadow:0 0 0 1px oklch(83% 0.145 211 / 0.10),var(--shadow);
+  animation:none;
+}
+.btn-primary::before,.btn-sim::before{animation:none;display:none}
+.btn-primary:hover,.btn-sim:hover{background:var(--surface-raised);border-color:var(--teal);box-shadow:var(--shadow);transform:translateY(-2px)}
+.btn-sim::after{background:none;-webkit-background-clip:initial;-webkit-text-fill-color:currentColor;background-clip:initial;color:var(--teal);animation:none}
+
+@keyframes buttonShine{
+  0%,48%{transform:translateX(-135%) skewX(-18deg);opacity:0}
+  58%{opacity:0.9}
+  78%{transform:translateX(180%) skewX(-18deg);opacity:0}
+  100%{transform:translateX(180%) skewX(-18deg);opacity:0}
+}
+@keyframes buttonAura{
+  0%,100%{box-shadow:0 0 0 1px oklch(83% 0.145 211 / 0.26),0 0 28px oklch(83% 0.145 211 / 0.16),0 18px 48px rgba(0,0,0,0.34),inset 0 1px 0 oklch(97% 0.012 245 / 0.12)}
+  50%{box-shadow:0 0 0 1px oklch(80% 0.145 292 / 0.32),0 0 44px oklch(83% 0.145 211 / 0.24),0 22px 58px rgba(0,0,0,0.38),inset 0 1px 0 oklch(97% 0.012 245 / 0.16)}
+}
+@keyframes simulatorAura{
+  0%,100%{background-position:0% 50%;box-shadow:0 0 0 1px oklch(78% 0.145 292 / 0.36),0 0 36px oklch(80% 0.145 345 / 0.18),0 0 70px oklch(83% 0.145 211 / 0.11),0 20px 48px rgba(0,0,0,0.34),inset 0 0 28px oklch(78% 0.145 292 / 0.10)}
+  50%{background-position:100% 50%;box-shadow:0 0 0 1px oklch(83% 0.145 211 / 0.42),0 0 46px oklch(83% 0.145 211 / 0.22),0 0 84px oklch(80% 0.145 345 / 0.13),0 24px 58px rgba(0,0,0,0.38),inset 0 0 36px oklch(83% 0.145 211 / 0.12)}
+}
+@keyframes arrowNudge{
+  0%,100%{transform:translateX(0)}
+  50%{transform:translateX(5px)}
+}
+
+.btn-primary,
+.btn-sim,
+.nav-reset{
+  isolation:isolate;
+  overflow:hidden;
+}
+.btn-primary{
+  color:var(--text-heavy);
+  background:
+    radial-gradient(120% 160% at 20% 0%,oklch(83% 0.145 211 / 0.20),transparent 52%),
+    linear-gradient(135deg,oklch(18% 0.035 248 / 0.98),oklch(14% 0.035 255 / 0.98));
+  border-color:oklch(62% 0.11 218);
+  letter-spacing:0.16em;
+  text-shadow:0 0 18px oklch(83% 0.145 211 / 0.34);
+  box-shadow:0 0 0 1px oklch(83% 0.145 211 / 0.24),0 0 34px oklch(83% 0.145 211 / 0.18),0 18px 48px rgba(0,0,0,0.34),inset 0 1px 0 oklch(97% 0.012 245 / 0.12);
+  animation:buttonAura 7s ease-in-out infinite;
+}
+.btn-primary::before,
+.btn-sim::before,
+.nav-reset::before{
+  content:'';
+  position:absolute;
+  top:-18%;
+  bottom:-18%;
+  left:0;
+  width:48%;
+  display:block;
+  background:linear-gradient(90deg,transparent,oklch(97% 0.012 245 / 0.20),oklch(83% 0.145 211 / 0.24),transparent);
+  transform:translateX(-135%) skewX(-18deg);
+  pointer-events:none;
+  animation:buttonShine 6.5s ease-in-out infinite;
+  z-index:-1;
+}
+.btn-primary::after{
+  content:'';
+  position:absolute;
+  inset:1px;
+  border-radius:inherit;
+  background:radial-gradient(ellipse 76% 70% at 50% 100%,oklch(83% 0.145 211 / 0.13),transparent 72%);
+  pointer-events:none;
+  z-index:-2;
+}
+.btn-primary:hover{
+  background:
+    radial-gradient(120% 160% at 22% 0%,oklch(83% 0.145 211 / 0.28),transparent 54%),
+    linear-gradient(135deg,oklch(21% 0.045 248),oklch(16% 0.04 255));
+  border-color:var(--teal);
+  text-shadow:0 0 22px oklch(83% 0.145 211 / 0.48);
+  box-shadow:0 0 0 1px oklch(83% 0.145 211 / 0.42),0 0 54px oklch(83% 0.145 211 / 0.26),0 22px 58px rgba(0,0,0,0.38),inset 0 1px 0 oklch(97% 0.012 245 / 0.18);
+}
+
+.btn-sim{
+  color:var(--text-heavy);
+  background:
+    radial-gradient(130% 180% at 18% 12%,oklch(83% 0.145 211 / 0.30),transparent 48%),
+    radial-gradient(110% 160% at 90% 88%,oklch(80% 0.145 345 / 0.26),transparent 54%),
+    linear-gradient(135deg,oklch(20% 0.055 248),oklch(18% 0.060 285) 55%,oklch(18% 0.052 330));
+  background-size:180% 180%;
+  border-color:oklch(70% 0.13 282);
+  letter-spacing:0.14em;
+  text-shadow:0 0 18px oklch(78% 0.145 292 / 0.38);
+  animation:simulatorAura 7s ease-in-out infinite;
+}
+.btn-sim::before{
+  width:54%;
+  background:linear-gradient(90deg,transparent,oklch(83% 0.145 211 / 0.16),oklch(80% 0.145 345 / 0.20),transparent);
+  animation-delay:1.2s;
+  z-index:-1;
+}
+.btn-sim::after{
+  color:var(--teal);
+  filter:drop-shadow(0 0 12px oklch(83% 0.145 211 / 0.54));
+  animation:arrowNudge 2.8s ease-in-out infinite;
+}
+.btn-sim:hover{
+  background:
+    radial-gradient(130% 180% at 18% 12%,oklch(83% 0.145 211 / 0.38),transparent 48%),
+    radial-gradient(110% 160% at 90% 88%,oklch(80% 0.145 345 / 0.32),transparent 54%),
+    linear-gradient(135deg,oklch(23% 0.065 248),oklch(21% 0.072 285) 55%,oklch(20% 0.062 330));
+  border-color:oklch(83% 0.145 211);
+  box-shadow:0 0 0 1px oklch(83% 0.145 211 / 0.44),0 0 56px oklch(78% 0.145 292 / 0.30),0 0 90px oklch(83% 0.145 211 / 0.18),0 24px 58px rgba(0,0,0,0.38),inset 0 0 40px oklch(83% 0.145 211 / 0.12);
+}
+.btn-sim:hover::before{opacity:0.8}
+
+.nav-reset{
+  color:var(--text-heavy);
+  background:
+    radial-gradient(120% 140% at 15% 0%,oklch(83% 0.145 211 / 0.18),transparent 55%),
+    linear-gradient(135deg,oklch(18% 0.038 248),oklch(15% 0.035 255));
+  border-color:oklch(62% 0.11 218);
+  letter-spacing:0.10em;
+  text-shadow:0 0 14px oklch(83% 0.145 211 / 0.32);
+  box-shadow:0 0 0 1px oklch(83% 0.145 211 / 0.18),0 0 24px oklch(83% 0.145 211 / 0.14),0 12px 32px rgba(0,0,0,0.30),inset 0 1px 0 oklch(97% 0.012 245 / 0.10);
+}
+.nav-reset::before{
+  width:42%;
+  animation-duration:7.5s;
+}
+.nav-reset svg{
+  color:var(--text-heavy);
+  filter:drop-shadow(0 0 8px oklch(83% 0.145 211 / 0.38));
+}
+.nav-reset:hover{
+  background:
+    radial-gradient(120% 140% at 15% 0%,oklch(83% 0.145 211 / 0.26),transparent 55%),
+    linear-gradient(135deg,oklch(21% 0.045 248),oklch(17% 0.04 255));
+  border-color:var(--teal);
+  text-shadow:0 0 18px oklch(83% 0.145 211 / 0.46);
+  box-shadow:0 0 0 1px oklch(83% 0.145 211 / 0.36),0 0 40px oklch(83% 0.145 211 / 0.24),0 16px 38px rgba(0,0,0,0.34);
+}
+
+.sec-pad{padding:96px 40px 104px}
+.sec-title{color:var(--text-heavy);line-height:1.08}
+.sec-rule{background:var(--border-strong);box-shadow:none}
+.sec-desc,.flip-cat-desc,.step-body,.card-body,.param-desc,.quick-sub,.photo-credit,.takeaway p,.si-header-desc,.si-card-summary{
+  color:var(--muted-strong);
+  font-weight:400;
+}
+.sec-desc{font-size:18px;max-width:650px;line-height:1.75}
+.step-label,.quick-title,.param-title,.card-title,.flip-cat-title,.si-card-title{color:var(--text-heavy)}
+.step-body{font-size:16px;line-height:1.7}
+.step-number{color:var(--teal);text-shadow:none}
+.exhibit-cta span{font-size:13px;letter-spacing:0.06em;color:var(--muted-strong);text-transform:none}
+
+.exhibit-prompt,#matters,#screen-id{
+  background:linear-gradient(180deg,var(--bg) 0%,var(--bg-soft) 48%,var(--bg) 100%);
+}
+.concept-card,.display-card,.photo-card,.si-header-card,.si-card,.takeaway,.inline-tip,.fps-tip{
+  background:var(--surface);
+  border:1px solid var(--border);
+  box-shadow:0 12px 34px rgba(0,0,0,0.26);
+  backdrop-filter:none;
+}
+.concept-card:hover,.si-card:hover{border-color:var(--border-strong);box-shadow:var(--shadow)}
+.card-icon{background:var(--surface-strong)}
+.card-title{font-size:21px}
+.card-body{font-size:16px;line-height:1.72}
+.card-expand,.si-card-expand{
+  min-height:44px;
+  border-color:var(--border-strong);
+  background:var(--surface-strong);
+  color:var(--text-heavy);
+  font-size:13px;
+  letter-spacing:0.03em;
+  text-transform:none;
+}
+.card-expand-label{text-transform:none}
+.card-expand:hover,.si-card-expand:hover,.card-expand.open,.si-card-expand.open{background:var(--surface-raised);border-color:var(--teal);box-shadow:none}
+.card-detail{background:var(--surface-strong);border-color:var(--border);opacity:1}
+.card-detail-inner p{font-size:15.5px;color:var(--text);line-height:1.7}
+.detail-tag,.param-badge,.si-panel-badge,.flip-back-tag{
+  color:var(--text-heavy)!important;
+  background:var(--surface-raised)!important;
+  border:1px solid var(--border-strong)!important;
+  font-size:12px;
+  letter-spacing:0.03em;
+}
+
+.display-card-label,.photo-label,.fps-label,.slider-endpoints span,.photo-counter,.si-header-note,footer{
+  color:var(--muted-strong);
+  font-size:12px;
+  letter-spacing:0.05em;
+  opacity:1;
+}
+.photo-loading{color:var(--muted-strong);font-size:13px}
+.carousel-nav{
+  width:44px;
+  height:44px;
+  background:var(--surface-strong);
+  border-color:var(--border-strong);
+  color:var(--text-heavy);
+}
+.carousel-dot{
+  position:relative;
+  width:44px;
+  height:44px;
+  padding:0;
+  border:0;
+  background:transparent;
+}
+.carousel-dot::before{
+  content:'';
+  position:absolute;
+  inset:17px;
+  border-radius:50%;
+  background:var(--border-strong);
+  border:1px solid var(--muted);
+}
+.carousel-dot.active::before{background:var(--teal);border-color:var(--teal);box-shadow:0 0 0 3px oklch(83% 0.145 211 / 0.18)}
+.preset-pill,.fps-num,.si-cat-btn,.si-device-pill,.si-fallback-btn,.si-change-btn{
+  min-height:44px;
+  border-color:var(--border);
+  background:var(--surface-strong);
+  color:var(--text);
+  font-size:14px;
+  letter-spacing:0.02em;
+  text-transform:none;
+}
+.preset-pill:hover,.fps-num:hover,.si-cat-btn:hover,.si-device-pill:hover,.si-fallback-btn:hover,.si-change-btn:hover,
+.preset-pill.active,.fps-num.active,.si-cat-btn.active,.si-device-pill.active{
+  color:var(--text-heavy);
+  background:var(--surface-raised);
+  border-color:var(--teal);
+  text-shadow:none;
+  box-shadow:none;
+}
+.param-value,.si-card-value{color:var(--text-heavy);background:var(--surface-strong);font-size:15px}
+.slider-wrap input[type="range"]{height:32px;background:transparent;outline:none}
+.slider-wrap input[type="range"]::-webkit-slider-runnable-track{height:4px;background:var(--border-strong);border-radius:999px}
+.slider-wrap input[type="range"]::-moz-range-track{height:4px;background:var(--border-strong);border-radius:999px}
+.slider-wrap input[type="range"]::-webkit-slider-thumb{width:22px;height:22px;margin-top:-9px;background:var(--text-heavy);border:3px solid var(--teal);box-shadow:none}
+.slider-wrap input[type="range"]::-moz-range-thumb{width:22px;height:22px;background:var(--text-heavy);border:3px solid var(--teal);box-shadow:none}
+.slider-wrap input[type="range"]:focus-visible,.si-search:focus-visible{
+  outline:3px solid var(--focus);
+  outline-offset:4px;
+  box-shadow:0 0 0 7px var(--focus-soft)!important;
+}
+
+.flip-grid{grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:24px}
+.flip-card{
+  appearance:none;
+  -webkit-appearance:none;
+  display:block;
+  width:100%;
+  height:400px;
+  padding:0;
+  border:0;
+  border-radius:16px;
+  background:transparent;
+  color:inherit;
+  text-align:left;
+}
+.flip-card-inner{display:block}
+.flip-front,.flip-back{
+  background:var(--surface)!important;
+  border:1px solid var(--border);
+  box-shadow:0 12px 34px rgba(0,0,0,0.28);
+}
+.flip-card:hover .flip-front,.flip-card:focus-visible .flip-front{border-color:var(--border-strong);box-shadow:var(--shadow)}
+.flip-card:not(.flipped):hover .flip-card-inner{transform:none}
+.flip-card:not(.flipped):hover{transform:translateY(-4px)}
+.flip-front-value{font-size:clamp(36px,3.4vw,48px)}
+.flip-front-label{color:var(--muted-strong);opacity:1;font-size:13px;letter-spacing:0.05em}
+.flip-front-label{text-transform:none}
+.flip-front-hint{
+  color:var(--text);
+  opacity:1;
+  font-size:12px;
+  letter-spacing:0.03em;
+  text-transform:none;
+}
+.flip-front-hint svg{animation:none}
+.flip-back-title{font-size:18px}
+.flip-back-body{font-size:15.5px;line-height:1.7;color:var(--text)}
+.flip-category:nth-of-type(2) .flip-front-value,.flip-category:nth-of-type(2) .flip-front-hint,.flip-category:nth-of-type(2) .flip-back-title{color:var(--teal)}
+.flip-category:nth-of-type(3) .flip-front-value,.flip-category:nth-of-type(3) .flip-front-hint,.flip-category:nth-of-type(3) .flip-back-title{color:var(--pink)}
+.flip-category:nth-of-type(4) .flip-front-value,.flip-category:nth-of-type(4) .flip-front-hint,.flip-category:nth-of-type(4) .flip-back-title{color:var(--purple)}
+.flip-category:nth-of-type(5) .flip-front-value,.flip-category:nth-of-type(5) .flip-front-hint,.flip-category:nth-of-type(5) .flip-back-title{color:var(--yellow)}
+
+.si-search{
+  min-height:48px;
+  background:var(--surface);
+  border-color:var(--border-strong);
+  color:var(--text-heavy);
+  font-size:15px;
+  outline:none;
+}
+.si-search::placeholder{color:var(--muted-strong);opacity:1}
+.si-card-title{font-size:17px}
+.si-card-summary,.si-card-detail p{font-size:15px;line-height:1.7;color:var(--text)}
+.si-card-icon{opacity:1;color:var(--teal)}
+footer{border-top-color:var(--border);background:var(--bg)}
+
+@media(max-width:900px){
+  .nav-reset{position:relative;font-size:11px;letter-spacing:0.02em}
+  .nav-links a{font-size:13px}
+}
+@media(max-width:600px){
+  .hero-sub,.sec-desc{font-size:16.5px}
+  .sec-eyebrow,.hero-eyebrow{font-size:12px;letter-spacing:0.08em}
+  .card-body,.step-body,.param-desc,.flip-cat-desc{font-size:15.5px}
+  .display-card-label,.photo-label{font-size:12px}
+  .fps-label{font-size:11px}
+  .flip-card{height:340px}
+  .flip-front-label,.flip-front-hint,.flip-back-tag{font-size:12px}
+  .flip-back-title{font-size:16px}
+  .flip-back-body{font-size:14.5px}
+  .si-cat-btn,.si-device-pill,.preset-pill,.fps-num{font-size:13px}
+  .si-card-summary{font-size:14.5px}
+  footer{font-size:11px}
+}
+@media(max-width:380px){
+  .nav-links a{font-size:12px;letter-spacing:0.04em}
+  .flip-card{height:320px}
+  .flip-front-value{font-size:32px}
+  .preset-pill,.si-cat-btn{font-size:12px}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{
+    animation-duration:0.001ms!important;
+    animation-iteration-count:1!important;
+    transition-duration:0.001ms!important;
+  }
+  .fade-up,.fade-up-scale,.fade-in-left,.fade-in-right{opacity:1;transform:none}
+  .btn-ripple,.click-pulse,.section-glow::after{display:none!important}
+  .flip-card:not(.flipped):hover .flip-card-inner{transform:none!important}
+}
 </style>
 </head>
 <body>
@@ -567,8 +1004,8 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
 
 <nav>
   <div class="nav-logo"><svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg"><defs><radialGradient id="orbBody" cx="0.4" cy="0.35" r="0.55"><stop offset="0%" stop-color="#90c8ff" stop-opacity="0.5"/><stop offset="50%" stop-color="#64aaff" stop-opacity="0.2"/><stop offset="85%" stop-color="#0a1e3c" stop-opacity="0.15"/><stop offset="100%" stop-color="#060a10" stop-opacity="0"/></radialGradient><radialGradient id="orbRim" cx="0.5" cy="0.5" r="0.5"><stop offset="70%" stop-color="#64aaff" stop-opacity="0"/><stop offset="88%" stop-color="#64aaff" stop-opacity="0.25"/><stop offset="100%" stop-color="#64aaff" stop-opacity="0.45"/></radialGradient><radialGradient id="orbSpec" cx="0.38" cy="0.32" r="0.3"><stop offset="0%" stop-color="#d4e8ff" stop-opacity="0.55"/><stop offset="50%" stop-color="#64aaff" stop-opacity="0.12"/><stop offset="100%" stop-color="#64aaff" stop-opacity="0"/></radialGradient></defs><circle cx="16" cy="16" r="13" fill="url(#orbBody)"/><circle cx="16" cy="16" r="13" fill="url(#orbRim)"/><circle cx="16" cy="16" r="13" fill="url(#orbSpec)"/></svg></div>
-  <button class="nav-reset" id="navReset" title="Reset the exhibit for the next visitor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Reset Exhibit For The Next Visitor</button>
-  <button class="nav-burger" id="navBurger" aria-label="Toggle menu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
+  <button class="nav-reset" id="navReset" title="Reset the exhibit for the next visitor"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 4v6h6"/><path d="M3.51 15a9 9 0 1 0 2.13-9.36L1 10"/></svg>Reset Exhibit</button>
+  <button class="nav-burger" id="navBurger" aria-label="Toggle menu" aria-controls="navLinks" aria-expanded="false"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg></button>
   <div class="nav-links" id="navLinks">
     <a href="#exhibit">The Exhibit</a>
     <a href="#simulator">Simulator</a>
@@ -603,7 +1040,7 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
       <div class="exhibit-step fade-up">
         <div class="step-number">02</div>
         <div class="step-label">White Point</div>
-        <div class="step-body">The video shifts from cool daylight (9,300K) to warm tungsten (4,000K). Watch the whites and grays change from blue to&nbsp;blue.</div>
+        <div class="step-body">The video shifts from cool daylight (9,300K) to warm tungsten (4,000K). Watch the whites and grays shift from cool blue toward warm amber.</div>
       </div>
       <div class="exhibit-step fade-up">
         <div class="step-number">03</div>
@@ -728,7 +1165,7 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
     <div class="sim-right fade-in-right">
       <div class="quick-section">
         <div class="quick-title">Quick Examples</div>
-        <div class="quick-sub">Tap any to see a real-world display&nbsp;scenario</div>
+        <div class="quick-sub">Choose one to see a real-world display&nbsp;scenario</div>
         <div class="preset-pills">
           <button class="preset-pill active" data-preset="default"><svg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 13 13' fill='none' aria-hidden='true'><circle cx='6.5' cy='6.5' r='5' stroke='currentColor' stroke-width='1.3'/><circle cx='6.5' cy='6.5' r='1.8' fill='currentColor'/></svg> Reference</button>
           <button class="preset-pill" data-preset="warm"><svg xmlns='http://www.w3.org/2000/svg' width='13' height='13' viewBox='0 0 13 13' fill='none' aria-hidden='true'><circle cx='6.5' cy='6.5' r='2.2' fill='currentColor'/><line x1='6.5' y1='1' x2='6.5' y2='2.5' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='6.5' y1='10.5' x2='6.5' y2='12' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='1' y1='6.5' x2='2.5' y2='6.5' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='10.5' y1='6.5' x2='12' y2='6.5' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='2.8' y1='2.8' x2='3.8' y2='3.8' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='9.2' y1='9.2' x2='10.2' y2='10.2' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='10.2' y1='2.8' x2='9.2' y2='3.8' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='3.8' y1='9.2' x2='2.8' y2='10.2' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/></svg> Warm screen</button>
@@ -837,38 +1274,38 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
       <div class="sec-eyebrow">Why It Matters</div>
       <h2 class="sec-title parallax-title">These Aren't Abstract.<br>They Affect Your Work&nbsp;Every&nbsp;Day.</h2>
       <hr class="sec-rule">
-      <p class="sec-desc">Tap any card to discover where that value shows up in the real world, and how it affects designers, gamers, photographers, and&nbsp;everyday&nbsp;users.</p>
+      <p class="sec-desc">Press any card to discover where that value shows up in the real world, and how it affects designers, gamers, photographers, and&nbsp;everyday&nbsp;users.</p>
     </div>
 
     <!-- Frame Rate -->
     <div class="flip-category fade-up">
       <div class="flip-cat-header"><span class="flip-cat-icon"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' aria-hidden='true'><rect x='2' y='4.5' width='16' height='11' rx='1.5' stroke='currentColor' stroke-width='1.5'/><path d='M8.5 8l4 2-4 2V8z' fill='currentColor'/><line x1='2' y1='7.5' x2='4.2' y2='7.5' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='2' y1='10' x2='4.2' y2='10' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='2' y1='12.5' x2='4.2' y2='12.5' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='15.8' y1='7.5' x2='18' y2='7.5' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='15.8' y1='10' x2='18' y2='10' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/><line x1='15.8' y1='12.5' x2='18' y2='12.5' stroke='currentColor' stroke-width='1.2' stroke-linecap='round'/></svg></span><span class="flip-cat-title">Frame Rate</span></div>
-      <p class="flip-cat-desc">The number of unique images your display shows per second. Tap a value to see where it appears and who&nbsp;it&nbsp;affects.</p>
+      <p class="flip-cat-desc">The number of unique images your display shows per second. Press a value to see where it appears and who&nbsp;it&nbsp;affects.</p>
       <div class="flip-grid">
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">24 fps</div><div class="flip-front-label">Cinematic</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 24 fps</div><div class="flip-back-body">Hollywood films, Netflix originals, and most cinematic content. The slight stutter is deliberate and culturally associated with a "movie&nbsp;feel."</div><div class="flip-back-tags"><span class="flip-back-tag">Film</span><span class="flip-back-tag">Streaming</span><span class="flip-back-tag">Cinematic look</span></div></div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">30 fps</div><div class="flip-front-label">Broadcast</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 30 fps</div><div class="flip-back-body">TV news, console games on older hardware, video calls, and most security cameras. Feels slightly stuttery during fast&nbsp;motion. Gamers at 30 fps have a measurable reaction-time disadvantage in competitive&nbsp;play.</div><div class="flip-back-tags"><span class="flip-back-tag">TV</span><span class="flip-back-tag">Console</span><span class="flip-back-tag">Video calls</span></div></div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">60 fps</div><div class="flip-front-label">Standard</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 60 fps</div><div class="flip-back-body">Most modern phones, PC gaming baseline, and UI animations on desktop&nbsp;OS. The threshold where most people perceive motion as "smooth." Scrolling text at 60&nbsp;fps feels natural and&nbsp;readable.</div><div class="flip-back-tags"><span class="flip-back-tag">Phones</span><span class="flip-back-tag">PC gaming</span><span class="flip-back-tag">UI design</span></div></div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">144 fps</div><div class="flip-front-label">High-end</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 144 fps</div><div class="flip-back-body">Gaming monitors, esports tournaments, and premium smartphones (120-144Hz). Each frame is only 7ms stale, giving competitive players fresher visual data. Once you adjust, 60&nbsp;fps feels&nbsp;slow.</div><div class="flip-back-tags"><span class="flip-back-tag">Esports</span><span class="flip-back-tag">Gaming monitors</span><span class="flip-back-tag">Pro phones</span></div></div>
-          </div>
-        </div>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">24 fps</span><span class="flip-front-label">Cinematic</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 24 fps</span><span class="flip-back-body">Hollywood films, Netflix originals, and most cinematic content. The slight stutter is deliberate and culturally associated with a "movie&nbsp;feel."</span><span class="flip-back-tags"><span class="flip-back-tag">Film</span><span class="flip-back-tag">Streaming</span><span class="flip-back-tag">Cinematic look</span></span></span>
+          </span>
+        </button>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">30 fps</span><span class="flip-front-label">Broadcast</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 30 fps</span><span class="flip-back-body">TV news, console games on older hardware, video calls, and most security cameras. Feels slightly stuttery during fast&nbsp;motion. Gamers at 30 fps have a measurable reaction-time disadvantage in competitive&nbsp;play.</span><span class="flip-back-tags"><span class="flip-back-tag">TV</span><span class="flip-back-tag">Console</span><span class="flip-back-tag">Video calls</span></span></span>
+          </span>
+        </button>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">60 fps</span><span class="flip-front-label">Standard</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 60 fps</span><span class="flip-back-body">Most modern phones, PC gaming baseline, and UI animations on desktop&nbsp;OS. The threshold where most people perceive motion as "smooth." Scrolling text at 60&nbsp;fps feels natural and&nbsp;readable.</span><span class="flip-back-tags"><span class="flip-back-tag">Phones</span><span class="flip-back-tag">PC gaming</span><span class="flip-back-tag">UI design</span></span></span>
+          </span>
+        </button>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">144 fps</span><span class="flip-front-label">High-end</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 144 fps</span><span class="flip-back-body">Gaming monitors, esports tournaments, and premium smartphones (120-144Hz). Each frame is only 7ms stale, giving competitive players fresher visual data. Once you adjust, 60&nbsp;fps feels&nbsp;slow.</span><span class="flip-back-tags"><span class="flip-back-tag">Esports</span><span class="flip-back-tag">Gaming monitors</span><span class="flip-back-tag">Pro phones</span></span></span>
+          </span>
+        </button>
       </div>
     </div>
 
@@ -877,24 +1314,24 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
       <div class="flip-cat-header"><span class="flip-cat-icon"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' aria-hidden='true'><circle cx='10' cy='10' r='3.2' fill='currentColor'/><line x1='10' y1='1.5' x2='10' y2='4' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><line x1='10' y1='16' x2='10' y2='18.5' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><line x1='1.5' y1='10' x2='4' y2='10' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><line x1='16' y1='10' x2='18.5' y2='10' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><line x1='4.1' y1='4.1' x2='5.8' y2='5.8' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><line x1='14.2' y1='14.2' x2='15.9' y2='15.9' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><line x1='15.9' y1='4.1' x2='14.2' y2='5.8' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/><line x1='5.8' y1='14.2' x2='4.1' y2='15.9' stroke='currentColor' stroke-width='1.5' stroke-linecap='round'/></svg></span><span class="flip-cat-title">White Point</span></div>
       <p class="flip-cat-desc">The color temperature of "white" on your screen. It silently tints everything you&nbsp;see.</p>
       <div class="flip-grid">
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">4,000K</div><div class="flip-front-label">Warm</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 4,000K</div><div class="flip-back-body">Night mode on phones, "reading mode" on tablets, and low-blue-light settings marketed for eye&nbsp;comfort. Designers working in this mode will over-correct for the amber tint, making prints look&nbsp;blue.</div><div class="flip-back-tags"><span class="flip-back-tag">Night mode</span><span class="flip-back-tag">Reading</span><span class="flip-back-tag">Eye comfort</span></div></div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">6,500K</div><div class="flip-front-label">Neutral / D65</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 6,500K</div><div class="flip-back-body">The international standard for color-critical work. sRGB, Rec.709, and most print workflows assume D65. Calibrated design monitors target this value. If you do color-sensitive work, this is your&nbsp;baseline.</div><div class="flip-back-tags"><span class="flip-back-tag">Design</span><span class="flip-back-tag">Photography</span><span class="flip-back-tag">Print</span></div></div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">9,300K</div><div class="flip-front-label">Cool / Blue</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 9,300K</div><div class="flip-back-body">Many factory-default monitors, especially in Asia where this standard originated. Older CRT and CCFL displays. Everything appears slightly blue-white, which the brain adapts to within minutes. Photographers editing here produce prints that look&nbsp;too&nbsp;warm.</div><div class="flip-back-tags"><span class="flip-back-tag">Factory default</span><span class="flip-back-tag">Office monitors</span><span class="flip-back-tag">CRT legacy</span></div></div>
-          </div>
-        </div>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">4,000K</span><span class="flip-front-label">Warm</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 4,000K</span><span class="flip-back-body">Night mode on phones, "reading mode" on tablets, and low-blue-light settings marketed for eye&nbsp;comfort. Designers working in this mode will over-correct for the amber tint, making prints look&nbsp;blue.</span><span class="flip-back-tags"><span class="flip-back-tag">Night mode</span><span class="flip-back-tag">Reading</span><span class="flip-back-tag">Eye comfort</span></span></span>
+          </span>
+        </button>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">6,500K</span><span class="flip-front-label">Neutral / D65</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 6,500K</span><span class="flip-back-body">The international standard for color-critical work. sRGB, Rec.709, and most print workflows assume D65. Calibrated design monitors target this value. If you do color-sensitive work, this is your&nbsp;baseline.</span><span class="flip-back-tags"><span class="flip-back-tag">Design</span><span class="flip-back-tag">Photography</span><span class="flip-back-tag">Print</span></span></span>
+          </span>
+        </button>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">9,300K</span><span class="flip-front-label">Cool / Blue</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 9,300K</span><span class="flip-back-body">Many factory-default monitors, especially in Asia where this standard originated. Older CRT and CCFL displays. Everything appears slightly blue-white, which the brain adapts to within minutes. Photographers editing here produce prints that look&nbsp;too&nbsp;warm.</span><span class="flip-back-tags"><span class="flip-back-tag">Factory default</span><span class="flip-back-tag">Office monitors</span><span class="flip-back-tag">CRT legacy</span></span></span>
+          </span>
+        </button>
       </div>
     </div>
 
@@ -903,24 +1340,24 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
       <div class="flip-cat-header"><span class="flip-cat-icon"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' aria-hidden='true'><path d='M10 2C10 2 3.5 8.5 3.5 13a6.5 6.5 0 0013 0C16.5 8.5 10 2 10 2z' stroke='currentColor' stroke-width='1.5' stroke-linejoin='round'/><path d='M7 14.5c.6 1.4 2 2.3 3.5 2.3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/></svg></span><span class="flip-cat-title">Saturation</span></div>
       <p class="flip-cat-desc">Measured as sRGB gamut coverage. Most consumer displays exceed 100%, making colors appear more vivid than the source&nbsp;file&nbsp;intended.</p>
       <div class="flip-grid">
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">72%</div><div class="flip-front-label">sRGB · Budget TN</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 72% sRGB</div><div class="flip-back-body">Older TN-panel office monitors and budget Chromebooks. Colors appear washed out and muted. Red looks brownish, blue looks dull. Designers on these screens tend to oversaturate their work, producing garish results on better&nbsp;displays.</div><div class="flip-back-tags"><span class="flip-back-tag">Budget TN panels</span><span class="flip-back-tag">Old Chromebooks</span><span class="flip-back-tag">Office surplus</span></div></div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">99%</div><div class="flip-front-label">sRGB · Calibrated</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 99% sRGB</div><div class="flip-back-body">Calibrated design monitors (EIZO, BenQ SW, Dell UltraSharp), MacBook Pro in sRGB mode, and professional photo editing setups. What you see matches what the content creator intended. The baseline for web design, print proofing, and color-critical&nbsp;work.</div><div class="flip-back-tags"><span class="flip-back-tag">Design monitors</span><span class="flip-back-tag">MacBook Pro</span><span class="flip-back-tag">Print proofing</span></div></div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">125%+</div><div class="flip-front-label">sRGB · Vivid Mode</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 125%+ sRGB</div><div class="flip-back-body">Samsung and many Android phones in "Vivid" mode, wide-gamut laptop displays without color management, and retail demo units. Colors appear punchy and saturated beyond the source file. That product photo online likely looks more intense on your screen than it will&nbsp;in&nbsp;person.</div><div class="flip-back-tags"><span class="flip-back-tag">Samsung Vivid</span><span class="flip-back-tag">Wide-gamut laptops</span><span class="flip-back-tag">Retail demos</span></div></div>
-          </div>
-        </div>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">72%</span><span class="flip-front-label">sRGB · Budget TN</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 72% sRGB</span><span class="flip-back-body">Older TN-panel office monitors and budget Chromebooks. Colors appear washed out and muted. Red looks brownish, blue looks dull. Designers on these screens tend to oversaturate their work, producing garish results on better&nbsp;displays.</span><span class="flip-back-tags"><span class="flip-back-tag">Budget TN panels</span><span class="flip-back-tag">Old Chromebooks</span><span class="flip-back-tag">Office surplus</span></span></span>
+          </span>
+        </button>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">99%</span><span class="flip-front-label">sRGB · Calibrated</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 99% sRGB</span><span class="flip-back-body">Calibrated design monitors (EIZO, BenQ SW, Dell UltraSharp), MacBook Pro in sRGB mode, and professional photo editing setups. What you see matches what the content creator intended. The baseline for web design, print proofing, and color-critical&nbsp;work.</span><span class="flip-back-tags"><span class="flip-back-tag">Design monitors</span><span class="flip-back-tag">MacBook Pro</span><span class="flip-back-tag">Print proofing</span></span></span>
+          </span>
+        </button>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">125%+</span><span class="flip-front-label">sRGB · Vivid Mode</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 125%+ sRGB</span><span class="flip-back-body">Samsung and many Android phones in "Vivid" mode, wide-gamut laptop displays without color management, and retail demo units. Colors appear punchy and saturated beyond the source file. That product photo online likely looks more intense on your screen than it will&nbsp;in&nbsp;person.</span><span class="flip-back-tags"><span class="flip-back-tag">Samsung Vivid</span><span class="flip-back-tag">Wide-gamut laptops</span><span class="flip-back-tag">Retail demos</span></span></span>
+          </span>
+        </button>
       </div>
     </div>
 
@@ -929,24 +1366,24 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
       <div class="flip-cat-header"><span class="flip-cat-icon"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' aria-hidden='true'><circle cx='10' cy='10' r='7.5' stroke='currentColor' stroke-width='1.5'/><path d='M10 2.5a7.5 7.5 0 010 15V2.5z' fill='currentColor'/></svg></span><span class="flip-cat-title">Contrast</span></div>
       <p class="flip-cat-desc">The range between the deepest black and brightest white your display can&nbsp;produce.</p>
       <div class="flip-grid">
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">300:1</div><div class="flip-front-label">Low / IPS budget</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 300:1</div><div class="flip-back-body">Cheap office monitors and older laptop panels. Dark scenes in movies look washed out. Radiologists on consumer displays can miss subtle density differences in medical scans that a higher-contrast panel would&nbsp;reveal.</div><div class="flip-back-tags"><span class="flip-back-tag">Office</span><span class="flip-back-tag">Healthcare risk</span><span class="flip-back-tag">Budget laptops</span></div></div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">1,000:1</div><div class="flip-front-label">Typical IPS</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see 1,000:1</div><div class="flip-back-body">Most mid-range IPS monitors and MacBook displays. Good enough for design work and general use. Blacks aren't perfect but shadow detail is&nbsp;visible. The standard most web content is designed&nbsp;for.</div><div class="flip-back-tags"><span class="flip-back-tag">Design monitors</span><span class="flip-back-tag">Laptops</span><span class="flip-back-tag">Web standard</span></div></div>
-          </div>
-        </div>
-        <div class="flip-card" onclick="this.classList.toggle('flipped')">
-          <div class="flip-card-inner">
-            <div class="flip-front"><div class="flip-front-value">6,000:1+</div><div class="flip-front-label">OLED / HDR</div><div class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Tap to flip</div></div>
-            <div class="flip-back"><div class="flip-back-title">Where you see deep contrast</div><div class="flip-back-body">OLED phones, high-end TVs, medical-grade displays, and HDR monitors. True blacks next to bright highlights. Gamers see more detail in dark environments. But designing only for OLED can mean your work looks flat on standard&nbsp;panels.</div><div class="flip-back-tags"><span class="flip-back-tag">OLED</span><span class="flip-back-tag">HDR</span><span class="flip-back-tag">Medical</span><span class="flip-back-tag">Gaming</span></div></div>
-          </div>
-        </div>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">300:1</span><span class="flip-front-label">Low / IPS budget</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 300:1</span><span class="flip-back-body">Cheap office monitors and older laptop panels. Dark scenes in movies look washed out. Radiologists on consumer displays can miss subtle density differences in medical scans that a higher-contrast panel would&nbsp;reveal.</span><span class="flip-back-tags"><span class="flip-back-tag">Office</span><span class="flip-back-tag">Healthcare risk</span><span class="flip-back-tag">Budget laptops</span></span></span>
+          </span>
+        </button>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">1,000:1</span><span class="flip-front-label">Typical IPS</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see 1,000:1</span><span class="flip-back-body">Most mid-range IPS monitors and MacBook displays. Good enough for design work and general use. Blacks aren't perfect but shadow detail is&nbsp;visible. The standard most web content is designed&nbsp;for.</span><span class="flip-back-tags"><span class="flip-back-tag">Design monitors</span><span class="flip-back-tag">Laptops</span><span class="flip-back-tag">Web standard</span></span></span>
+          </span>
+        </button>
+        <button type="button" class="flip-card" aria-expanded="false">
+          <span class="flip-card-inner">
+            <span class="flip-front"><span class="flip-front-value">6,000:1+</span><span class="flip-front-label">OLED / HDR</span><span class="flip-front-hint"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none' aria-hidden='true'><path d='M1.5 6A4.5 4.5 0 0110.2 3' stroke='currentColor' stroke-width='1.3' stroke-linecap='round'/><path d='M8.8 1.5l1.4 1.5-1.8.8' stroke='currentColor' stroke-width='1.3' stroke-linecap='round' stroke-linejoin='round'/></svg> Press for details</span></span>
+            <span class="flip-back"><span class="flip-back-title">Where you see deep contrast</span><span class="flip-back-body">OLED phones, high-end TVs, medical-grade displays, and HDR monitors. True blacks next to bright highlights. Gamers see more detail in dark environments. But designing only for OLED can mean your work looks flat on standard&nbsp;panels.</span><span class="flip-back-tags"><span class="flip-back-tag">OLED</span><span class="flip-back-tag">HDR</span><span class="flip-back-tag">Medical</span><span class="flip-back-tag">Gaming</span></span></span>
+          </span>
+        </button>
       </div>
     </div>
 
@@ -966,17 +1403,63 @@ function toggleDetail(btn){
   const idx=btn.dataset.detail;
   const detail=document.querySelector('.card-detail[data-idx="'+idx+'"]');
   const isOpen=detail.classList.contains('open');
-  document.querySelectorAll('.card-detail.open').forEach(d=>{d.style.maxHeight='0px';d.classList.remove('open');document.querySelector('[data-detail="'+d.dataset.idx+'"]').classList.remove('open')});
+  document.querySelectorAll('.card-detail.open').forEach(d=>{
+    d.style.maxHeight='0px';
+    d.classList.remove('open');
+    d.setAttribute('aria-hidden','true');
+    const trigger=document.querySelector('[data-detail="'+d.dataset.idx+'"]');
+    if(trigger){trigger.classList.remove('open');trigger.setAttribute('aria-expanded','false')}
+  });
   if(!isOpen){
     /* On narrow screens, move detail right after its parent card */
     if(window.innerWidth<=900){
       const card=btn.closest('.concept-card');
       if(card&&card.nextElementSibling!==detail){card.after(detail)}
     }
-    detail.classList.add('open');btn.classList.add('open');
+    detail.classList.add('open');btn.classList.add('open');btn.setAttribute('aria-expanded','true');
+    detail.setAttribute('aria-hidden','false');
     detail.style.maxHeight=detail.scrollHeight+'px';
+  }else{
+    btn.setAttribute('aria-expanded','false');
+    detail.setAttribute('aria-hidden','true');
   }
 }
+
+function updateFlipCardA11y(card,index){
+  const value=card.querySelector('.flip-front-value')?.textContent.trim()||'this value';
+  const label=card.querySelector('.flip-front-label')?.textContent.trim();
+  const back=card.querySelector('.flip-back');
+  const front=card.querySelector('.flip-front');
+  const isFlipped=card.classList.contains('flipped');
+  if(back&&!back.id){back.id='flip-card-details-'+index}
+  if(back){back.setAttribute('aria-hidden',String(!isFlipped));card.setAttribute('aria-controls',back.id)}
+  if(front){front.setAttribute('aria-hidden',String(isFlipped))}
+  card.setAttribute('aria-expanded',String(isFlipped));
+  card.setAttribute('aria-label',(isFlipped?'Hide details for ':'Show details for ')+value+(label?', '+label:''));
+}
+
+function toggleFlipCard(card){
+  card.classList.toggle('flipped');
+  updateFlipCardA11y(card,[...document.querySelectorAll('.flip-card')].indexOf(card));
+}
+
+function initAccessibleControls(){
+  document.querySelectorAll('.card-expand').forEach((btn,i)=>{
+    const detail=document.querySelector('.card-detail[data-idx="'+btn.dataset.detail+'"]');
+    btn.setAttribute('aria-expanded','false');
+    if(detail){
+      detail.id=detail.id||'concept-detail-'+i;
+      detail.setAttribute('aria-hidden','true');
+      btn.setAttribute('aria-controls',detail.id);
+    }
+  });
+  document.querySelectorAll('.flip-card').forEach((card,i)=>{
+    updateFlipCardA11y(card,i);
+    card.addEventListener('click',()=>toggleFlipCard(card));
+  });
+}
+
+initAccessibleControls();
 
 /* SIMULATOR ENGINE */
 const patternCanvas=document.getElementById('patternCanvas'),patternCtx=patternCanvas.getContext('2d');
@@ -1130,7 +1613,14 @@ function showFpsTip(btnEl,html){
     section.style.position='relative';
     section.appendChild(tip);
   } else {
-    btnEl.closest('.fps-cell').appendChild(tip);
+    /* Anchor to the full grid so the bubble never overflows the panel edge */
+    btnEl.closest('.fps-grid').appendChild(tip);
+    requestAnimationFrame(()=>{
+      const tr=tip.getBoundingClientRect(),br=btnEl.getBoundingClientRect();
+      let ax=br.left+br.width/2-tr.left;
+      ax=Math.max(16,Math.min(tr.width-16,ax));
+      tip.style.setProperty('--fps-arrow',ax+'px');
+    });
   }
   requestAnimationFrame(()=>tip.classList.add('show'));
   setTimeout(()=>{tip.classList.remove('show');setTimeout(()=>tip.remove(),300)},5000);
@@ -1821,18 +2311,19 @@ function siRender(d,exact){
   if(d.resolution&&d.resolution!=='Varies')html+='<span class="si-panel-badge">'+d.resolution+'</span>';
   html+='<p class="si-header-desc">Your '+d.name+' uses a <strong>'+d.panel+'</strong> panel. Below are six aspects of your screen that go beyond the basics of refresh rate and color&nbsp;gamut.</p>';
   html+='<p class="si-header-note">'+(exact?'Exact device match. ':'Based on typical panel configuration. ')+'Specs may vary by region and production&nbsp;batch.</p>';
-  html+='<button class="si-change-btn" onclick="siReset()">Change Device</button>';
+  html+='<button type="button" class="si-change-btn" onclick="siReset()">Change Device</button>';
   html+='</div>';
 
   html+='<div class="si-insight-grid">';
   cards.forEach((c,i)=>{
+    const detailId='si-card-detail-'+i;
     html+='<div class="si-card fade-up" style="transition-delay:'+(i*0.08)+'s">';
     html+='<div class="si-card-icon">'+c.icon+'</div>';
     html+='<div class="si-card-title">'+c.title+'</div>';
     html+='<div class="si-card-value">'+c.value+'</div>';
     html+='<div class="si-card-summary">'+c.summary+'</div>';
-    html+='<button class="si-card-expand" onclick="siToggle(this)"><span>Learn more</span> <span class="si-card-expand-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11" width="11" height="11" fill="none"><path d="M2 3.5l3.5 3.5L9 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>';
-    html+='<div class="si-card-detail" data-si="'+i+'">'+c.detail+'</div>';
+    html+='<button type="button" class="si-card-expand" aria-expanded="false" aria-controls="'+detailId+'" onclick="siToggle(this)"><span>Learn more</span> <span class="si-card-expand-arrow"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 11 11" width="11" height="11" fill="none"><path d="M2 3.5l3.5 3.5L9 3.5" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/></svg></span></button>';
+    html+='<div class="si-card-detail" id="'+detailId+'" data-si="'+i+'" aria-hidden="true">'+c.detail+'</div>';
     html+='</div>';
   });
   html+='</div>';
@@ -1853,11 +2344,19 @@ function siToggle(btn){
   const isOpen=detail.classList.contains('open');
   document.querySelectorAll('.si-card-detail.open').forEach(d=>{
     d.style.maxHeight='0px';d.classList.remove('open');
-    d.closest('.si-card').querySelector('.si-card-expand').classList.remove('open');
+    d.setAttribute('aria-hidden','true');
+    const trigger=d.closest('.si-card').querySelector('.si-card-expand');
+    trigger.classList.remove('open');
+    trigger.setAttribute('aria-expanded','false');
   });
   if(!isOpen){
     detail.classList.add('open');btn.classList.add('open');
+    btn.setAttribute('aria-expanded','true');
+    detail.setAttribute('aria-hidden','false');
     detail.style.maxHeight=detail.scrollHeight+'px';
+  }else{
+    btn.setAttribute('aria-expanded','false');
+    detail.setAttribute('aria-hidden','true');
   }
 }
 
