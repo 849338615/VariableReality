@@ -87,7 +87,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,10,16,0.7
 .concept-card:nth-child(3) .card-icon{color:#8b5cf6}
 .concept-card:nth-child(4) .card-icon{color:#fbbf24}
 .card-title{font-weight:700;font-size:19px;color:var(--text-heavy);margin-bottom:12px}
-.card-body{font-weight:400;font-size:15.5px;color:var(--muted);line-height:1.65;margin-bottom:24px}
+.card-body{font-weight:400;font-size:15.5px;color:var(--muted);line-height:1.65;margin-bottom:24px;text-wrap:pretty}
 
 /* Accordion trigger */
 .card-expand{display:inline-flex;align-items:center;gap:8px;margin-top:auto;margin-bottom:6px;cursor:pointer;border:1px solid rgba(34,211,238,0.15);background:rgba(34,211,238,0.04);padding:8px 16px;border-radius:24px;font-family:var(--font-mono);font-size:11px;letter-spacing:0.04em;color:var(--teal);font-weight:400;transition:all 0.3s cubic-bezier(0.4,0,0.2,1)}
@@ -242,7 +242,7 @@ nav{position:fixed;top:0;left:0;right:0;z-index:1000;background:rgba(6,10,16,0.7
 
 /* Flip card grid */
 .flip-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));gap:20px}
-.flip-card{perspective:1000px;height:400px;cursor:pointer;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1)}
+.flip-card{perspective:1000px;min-height:400px;cursor:pointer;transition:transform 0.35s cubic-bezier(0.34,1.56,0.64,1)}
 .flip-card:not(.flipped):hover{transform:translateY(-8px)}
 .flip-card:not(.flipped):active{transform:translateY(-2px) scale(0.97);transition:transform 0.1s ease}
 .flip-card-inner{position:relative;width:100%;height:100%;transition:transform 0.72s cubic-bezier(0.34,1.56,0.64,1);transform-style:preserve-3d;will-change:transform}
@@ -448,11 +448,32 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
   .sim-viewport{display:flex;flex-direction:column}
   .sim-viewport.panel-open .sim-monitor{transform:none}
   .sim-monitor{transition:none}
-  .sim-rail{position:static;transform:none;width:auto;height:auto;display:flex;flex-wrap:wrap;justify-content:center;gap:8px 24px;margin-top:22px;padding-bottom:22px}
-  .sim-rail-left{order:1;left:auto}.sim-panel{order:2}.sim-rail-right{order:3;right:auto}
+  /* rails drop into the vertical stack as real tap targets */
+  .sim-rail{position:static;transform:none;width:100%;max-width:460px;height:auto;display:grid;align-content:start;gap:0;margin:0 auto;padding:0}
+  .sim-rail-left{order:1;left:auto;margin-top:24px}
+  .sim-panel{order:2}
+  .sim-rail-right{order:3;right:auto;margin-top:22px}
   .rail-spine{display:none}
-  .rail-node{position:relative!important;top:auto!important;left:auto!important;transform:none}
-  .rail-node.active{transform:none}
+  .rail-node{position:relative!important;top:auto!important;left:auto!important;transform:none!important}
+
+  /* PRIMARY: parameter tabs (icon + name + live value) */
+  #paramRail{grid-template-columns:repeat(4,1fr);gap:8px}
+  #paramRail .rail-node{width:100%;height:auto;flex-direction:column;align-items:center;justify-content:center;gap:7px;padding:13px 6px 11px;border-radius:13px;background:rgba(11,16,27,0.55);border:1px solid rgba(34,211,238,0.16)}
+  #paramRail .rail-node:hover{background:rgba(34,211,238,0.08)}
+  #paramRail .rail-node.active{width:100%;height:auto;background:rgba(34,211,238,0.12);border-color:var(--teal);box-shadow:0 0 0 1px var(--teal),0 6px 18px rgba(34,211,238,0.16)}
+  #paramRail .rail-node svg{width:19px;height:19px}
+  #paramRail .rail-node.active svg{transform:none}
+  #paramRail .rail-label{position:static;left:auto;top:auto;transform:none;white-space:normal;font-size:9px;letter-spacing:0.03em;line-height:1.25}
+  #paramRail .rail-val{font-size:11px;margin-top:3px}
+
+  /* SECONDARY: quick-scenario chips (icon badge + name) */
+  #presetRail{grid-template-columns:repeat(6,1fr);gap:6px}
+  #presetRail .rail-node{width:100%;height:auto;flex-direction:column;align-items:center;gap:7px;padding:4px 2px;border:none;background:none;box-shadow:none!important;-webkit-backdrop-filter:none;backdrop-filter:none;border-radius:10px}
+  #presetRail .rail-node svg{width:15px;height:15px;box-sizing:content-box;padding:9px;border-radius:50%;border:1px solid rgba(34,211,238,0.24);background:rgba(11,16,27,0.6);transition:border-color 0.25s ease,background 0.25s ease,box-shadow 0.25s ease}
+  #presetRail .rail-node:hover svg{border-color:rgba(34,211,238,0.5)}
+  #presetRail .rail-node.active{width:100%;height:auto}
+  #presetRail .rail-node.active svg{border-color:var(--teal);background:rgba(34,211,238,0.14);box-shadow:0 0 16px rgba(34,211,238,0.28)}
+  #presetRail .rail-label{position:static;left:auto;top:auto;transform:none;white-space:normal;font-size:9px;letter-spacing:0.02em;line-height:1.2}
   .sim-panel{position:static;transform:none!important;width:auto;max-width:none;opacity:1!important;pointer-events:auto!important;margin:18px auto 0;max-width:460px}
   .sim-anno{font-size:10px}
   .sim-anno.tl{top:14px;left:18px}
@@ -503,10 +524,12 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
   .source-btn{font-size:10px;padding:7px 13px}
   .photo-meta{min-width:0}
   .photo-credit{font-size:11.5px}
-  .sim-rail{gap:6px 16px;margin-top:18px}
-  .rail-node{width:42px;height:42px}
-  .rail-node.active{width:48px;height:48px}
-  .rail-label{font-size:9.5px}
+  .sim-rail-left{margin-top:20px}
+  .sim-rail-right{margin-top:20px}
+  #paramRail{gap:7px}
+  #paramRail .rail-node{padding:12px 5px 10px;gap:6px}
+  #paramRail .rail-val{font-size:10.5px}
+  #presetRail{gap:5px}
   .sim-panel{padding:16px 18px 16px;border-radius:16px}
   .panel-value{font-size:20px}
   .panel-copy{font-size:12px;line-height:1.5}
@@ -576,8 +599,13 @@ footer{padding:36px 40px;display:flex;align-items:center;justify-content:center;
   .flip-front{padding:22px 18px}
   .flip-back{padding:22px 18px}
   .flip-front-value{font-size:30px}
-  .sim-rail{gap:6px 12px}
-  .rail-label{font-size:9px;letter-spacing:0.04em}
+  #paramRail{gap:6px}
+  #paramRail .rail-node{padding:11px 4px 9px}
+  #paramRail .rail-label{font-size:8px;letter-spacing:0.02em}
+  #paramRail .rail-val{font-size:10px}
+  #presetRail{gap:4px}
+  #presetRail .rail-node svg{padding:8px}
+  #presetRail .rail-label{font-size:8px}
   .si-categories{gap:4px}
   .si-cat-btn{padding:5px 10px;font-size:8px}
 }
@@ -1090,7 +1118,7 @@ footer{border-top-color:var(--border);background:var(--bg)}
       <div class="concept-card fade-up-scale">
         <div class="card-icon"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 20 20' fill='none' aria-hidden='true'><circle cx='10' cy='10' r='7.5' stroke='currentColor' stroke-width='1.5'/><path d='M10 2.5a7.5 7.5 0 010 15V2.5z' fill='currentColor'/></svg></div>
         <div class="card-title">Contrast &amp;&nbsp;Black&nbsp;Level</div>
-        <div class="card-body">A high-contrast display crushes dark shadow detail. A lifted black level makes blacks look gray. Both change what you can and&nbsp;cannot&nbsp;see.</div>
+        <div class="card-body">A high-contrast display crushes dark shadow detail. A lifted black level makes blacks look gray. Both change what you can and cannot&nbsp;see.</div>
         <button class="card-expand" data-detail="3" onclick="toggleDetail(this)"><span class="card-expand-label">What is it?</span> <span class="card-expand-arrow"><svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 11 11' fill='none' aria-hidden='true'><path d='M2 3.5l3.5 3.5L9 3.5' stroke='currentColor' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg></span></button>
       </div>
 
@@ -1137,7 +1165,7 @@ footer{border-top-color:var(--border);background:var(--bg)}
     <p class="sec-desc">Use the controls to simulate how different display settings affect the same image. The four monitors in the gallery each show one variable. Here you can combine&nbsp;them&nbsp;all.</p>
   </div>
   <div class="sim-shell fade-up">
-    <div class="sim-viewport panel-open" id="simViewport">
+    <div class="sim-viewport" id="simViewport">
       <div class="sim-stage" id="simStage">
         <div class="sim-monitor" id="simMonitor">
           <canvas id="simGL" class="sim-gl" aria-hidden="true"></canvas>
@@ -1202,7 +1230,7 @@ footer{border-top-color:var(--border);background:var(--bg)}
           </div>
           <p class="panel-copy" id="pCopyFps"></p>
         </div>
-        <div class="panel-page active" data-page="wp">
+        <div class="panel-page" data-page="wp">
           <div class="panel-head"><span class="panel-title">Color Temperature</span><span class="panel-badge" id="pBadgeWp">Neutral</span></div>
           <div class="panel-value" id="pValWp">6,500K</div>
           <input type="range" id="wpSlider" class="deck-slider" min="4000" max="9300" step="100" value="6500" aria-label="Color temperature in kelvin">
@@ -1481,6 +1509,32 @@ function initAccessibleControls(){
 }
 
 initAccessibleControls();
+
+/* Size each flip-card row to its tallest face so back content never clips (absolute faces can't auto-grow) */
+function sizeFlipGrids(){
+  document.querySelectorAll('.flip-grid').forEach(grid=>{
+    const cards=[...grid.querySelectorAll('.flip-card')];
+    if(!cards.length)return;
+    cards.forEach(c=>{c.style.height=''});
+    let max=400;
+    cards.forEach(c=>{
+      const f=c.querySelector('.flip-front'),b=c.querySelector('.flip-back');
+      if(f)max=Math.max(max,f.scrollHeight);
+      if(b)max=Math.max(max,b.scrollHeight);
+    });
+    cards.forEach(c=>{c.style.height=max+'px'});
+  });
+}
+let _flipSizeRaf=0;
+function scheduleFlipSize(){cancelAnimationFrame(_flipSizeRaf);_flipSizeRaf=requestAnimationFrame(sizeFlipGrids)}
+window.addEventListener('load',scheduleFlipSize);
+window.addEventListener('resize',scheduleFlipSize);
+if(document.fonts&&document.fonts.ready)document.fonts.ready.then(scheduleFlipSize);
+const _mattersSection=document.getElementById('matters');
+if('IntersectionObserver' in window&&_mattersSection){
+  new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting)scheduleFlipSize()})},{rootMargin:'200px'}).observe(_mattersSection);
+}
+scheduleFlipSize();
 
 /* SIMULATOR ENGINE */
 const patternCanvas=document.getElementById('patternCanvas'),patternCtx=patternCanvas.getContext('2d');
@@ -1779,8 +1833,8 @@ function onRailResize(){layoutRails()}
 if('ResizeObserver' in window)new ResizeObserver(onRailResize).observe(simViewport);
 else window.addEventListener('resize',onRailResize,{passive:true});
 
-/* default: open Color Temperature so the controls are immediately usable */
-showPage('wp');
+/* default: panel closed — nothing on the parameter rail is pre-selected; only the
+   Reference preset is active. A page activates the first time a dial is opened. */
 
 /* bridge for the Three.js module (progressive enhancement, same pattern as the hero orb) */
 function setGPUActive(on){
@@ -2623,12 +2677,12 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
     s.lineTo(x, y+r); s.quadraticCurveTo(x, y, x+r, y);
   })(bodyShape, BODY_W, BODY_H, 0.06);
   const bodyGeo = new THREE.ExtrudeGeometry(bodyShape, { depth:0.07, bevelEnabled:true, bevelSize:0.008, bevelThickness:0.006, bevelSegments:3, curveSegments:12 });
-  const bodyMat = new THREE.MeshStandardMaterial({ color:0x10161f, metalness:0.55, roughness:0.4, envMapIntensity:0.55 });
+  const bodyMat = new THREE.MeshStandardMaterial({ color:0x232f40, metalness:0.6, roughness:0.36, envMapIntensity:1.0 });
   const body = new THREE.Mesh(bodyGeo, bodyMat);
   body.position.z = -0.076;       // front bevel face lands at z = 0
   monitor.add(body);
 
-  const standMat = new THREE.MeshStandardMaterial({ color:0x161d29, metalness:0.85, roughness:0.3, envMapIntensity:0.85 });
+  const standMat = new THREE.MeshStandardMaterial({ color:0x2b3950, metalness:0.82, roughness:0.32, envMapIntensity:1.15 });
   const FLOOR_Y = -1.18;
   const neck = new THREE.Mesh(new THREE.BoxGeometry(0.11, 0.52, 0.05), standMat);
   neck.position.set(0, -0.92, -0.085);
@@ -2669,14 +2723,14 @@ import { RoomEnvironment } from 'three/addons/environments/RoomEnvironment.js';
   monitor.add(shadow);
 
   /* lights */
-  scene.add(new THREE.HemisphereLight(0x223349, 0x05080d, 0.75));
-  const key = new THREE.DirectionalLight(0xbfd8ff, 1.7);
+  scene.add(new THREE.HemisphereLight(0x2c3e58, 0x05080d, 0.9));
+  const key = new THREE.DirectionalLight(0xbfd8ff, 2.05);
   key.position.set(2.5, 3, 2.5);
   scene.add(key);
-  const rim = new THREE.PointLight(0x22d3ee, 6, 9, 2);
+  const rim = new THREE.PointLight(0x22d3ee, 9, 9, 2);
   rim.position.set(-2.4, 1.3, -1.6);
   scene.add(rim);
-  const rim2 = new THREE.PointLight(0x6573ff, 2.5, 9, 2);
+  const rim2 = new THREE.PointLight(0x6573ff, 4.5, 9, 2);
   rim2.position.set(2.6, -0.3, -1.2);
   scene.add(rim2);
 
